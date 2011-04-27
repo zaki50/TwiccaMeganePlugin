@@ -17,9 +17,21 @@ package org.zakky.twicca.megane;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 
 public class InfoActivity extends Activity {
     
+    private String me;
+    private String gane;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        me = getString(R.string.me);
+        gane = getString(R.string.gane);
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -33,7 +45,7 @@ public class InfoActivity extends Activity {
         final String user_input = toNonNull(intent.getStringExtra("user_input"));
         final String suffix = toNonNull(intent.getStringExtra("suffix"));
 
-        final String result = prefix + '眼' + user_input + '鏡' + suffix;
+        final String result = prefix + me + user_input + gane + suffix;
 
         final Intent resultIntent = new Intent();
         resultIntent.putExtra(Intent.EXTRA_TEXT, result);
